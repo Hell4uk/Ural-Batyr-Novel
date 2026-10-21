@@ -33,6 +33,21 @@ default remembered_elder = False
 default ending_reached = False
 default persistent.large_text = False
 default persistent.reduced_motion = False
+default persistent.text_scale = 1
+default persistent.choice_highlight = True
+
+init python:
+    def bump_stat(stat, amount=1):
+        setattr(store, stat, getattr(store, stat) + amount)
+        names = {"courage": "Смелость", "mercy": "Милосердие", "wisdom": "Рассудительность"}
+        renpy.notify("%s +1" % names.get(stat, stat))
+
+    def reset_settings():
+        persistent.large_text = False
+        persistent.reduced_motion = False
+        persistent.text_scale = 1
+        persistent.choice_highlight = True
+        renpy.notify("Настройки сброшены")
 
 define songs = (
     ("Дом среди вод", "Выслушать Янбирде и понять, что значит запрет."),

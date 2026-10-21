@@ -76,5 +76,5 @@ style panel_title:
     color gui.accent_color
     bold True
 style muted_text:
-    size 24
-    color "#a8b9ad"
+    size 26
+    color "#c3d4c6"

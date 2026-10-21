@@ -17,7 +17,7 @@ screen say(who, what):
             spacing 8
             if who:
                 text who id "who" style "speaker_name" xfill True
-            text what id "what" style "dialogue_text" size (36 if persistent.large_text else 32) xfill True
+            text what id "what" style "dialogue_text" size (int((36 if persistent.large_text else 32) * persistent.text_scale)) xfill True
 
 style dialogue_window:
     background Solid("#0b2823ed")
@@ -44,19 +44,61 @@ screen choice(items):
     zorder 20
     frame:
         align (0.76, 0.56)
-        xsize 700
+        xsize 660
         background Solid("#0b2823ed")
         padding (24, 24)
         vbox:
             spacing 12
             for i in items:
-                textbutton i.caption action i.action style "choice_button"
+                textbutton i.caption action i.action style "choice_button" selected persistent.choice_highlight
+
+screen preferences():
+    tag menu
+    zorder 100
+    use game_menu("Настройки"):
+        hbox:
+            spacing 48
+            vbox:
+                xsize 620
+                spacing 18
+                text "Экран и чтение" style "panel_title"
+                hbox:
+                    spacing 10
+                    textbutton "Окно" action Preference("display", "window") style "page_button"
+                    textbutton "Полный экран" action Preference("display", "fullscreen") style "page_button"
+                text "Скорость появления текста" size 24
+                bar id "text_speed" value Preference("text speed") xsize 590
+                text "Справа — мгновенное отображение." style "muted_text"
+                text "Пауза при авточтении" size 24
+                bar id "auto_time" value Preference("auto-forward time") xsize 590
+                text "Размер текста диалогов" size 24
+                bar value FieldValue(persistent, "text_scale", range=0.5, offset=0.75, step=0.05, style="slider", max_is_zero=False, force_step=True) xsize 590
+                text "Текущий масштаб: [persistent.text_scale]" style "muted_text"
+                textbutton "Крупный текст диалогов" action ToggleField(persistent, "large_text") selected persistent.large_text style "setting_button"
+                textbutton "Уменьшить движение" action ToggleField(persistent, "reduced_motion") selected persistent.reduced_motion style "setting_button"
+                textbutton "Подсветка выборов" action ToggleField(persistent, "choice_highlight") selected persistent.choice_highlight style "setting_button"
+                textbutton "Пропускать непрочитанное" action Preference("skip", "toggle") style "setting_button"
+            vbox:
+                xsize 620
+                spacing 18
+                text "Звук" style "panel_title"
+                text "Громкость музыки" size 24
+                bar id "music_volume" value Preference("music volume") xsize 590
+                textbutton "Выключить музыку" action Preference("music mute", "toggle") style "setting_button"
+                text "Громкость эффектов" size 24
+                bar id "sound_volume" value Preference("sound volume") xsize 590
+                hbox:
+                    spacing 10
+                    textbutton "Выключить эффекты" action Preference("sound mute", "toggle") style "setting_button"
+                    textbutton "Проверить" action Play("sound", "music/sfx/click.mp3") style "page_button"
+                null height 8
 
 style choice_button is button:
     xfill True
     padding (24, 18)
     background Solid("#15372fe8")
     hover_background Solid("#315748f2")
+    selected_background Solid("#315748f2")
 
 style choice_button_text is button_text:
     size 28
@@ -262,45 +304,6 @@ style save_slot is button:
     background Solid("#102f28e8")
     hover_background Solid("#24483ce8")
 
-screen preferences():
-    tag menu
-    zorder 100
-    use game_menu("Настройки"):
-        hbox:
-            spacing 48
-            vbox:
-                xsize 620
-                spacing 18
-                text "Экран и чтение" style "panel_title"
-                hbox:
-                    spacing 10
-                    textbutton "Окно" action Preference("display", "window") style "page_button"
-                    textbutton "Полный экран" action Preference("display", "fullscreen") style "page_button"
-                text "Скорость появления текста" size 24
-                bar id "text_speed" value Preference("text speed") xsize 590
-                text "Справа — мгновенное отображение." style "muted_text"
-                text "Пауза при авточтении" size 24
-                bar id "auto_time" value Preference("auto-forward time") xsize 590
-                textbutton "Крупный текст диалогов" action ToggleField(persistent, "large_text") selected persistent.large_text style "setting_button"
-                textbutton "Уменьшить движение" action ToggleField(persistent, "reduced_motion") selected persistent.reduced_motion style "setting_button"
-                textbutton "Пропускать непрочитанное" action Preference("skip", "toggle") style "setting_button"
-            vbox:
-                xsize 620
-                spacing 18
-                text "Звук" style "panel_title"
-                text "Громкость музыки" size 24
-                bar id "music_volume" value Preference("music volume") xsize 590
-                textbutton "Выключить музыку" action Preference("music mute", "toggle") style "setting_button"
-                text "Громкость эффектов" size 24
-                bar id "sound_volume" value Preference("sound volume") xsize 590
-                hbox:
-                    spacing 10
-                    textbutton "Выключить эффекты" action Preference("sound mute", "toggle") style "setting_button"
-                    textbutton "Проверить" action Play("sound", "music/sfx/click.mp3") style "page_button"
-                null height 8
-                text "Настройки сохраняются между запусками." style "muted_text"
-                text "Space / Enter — далее\nEsc — меню\nJ — журнал\nH — скрыть интерфейс\nPage Up — вернуться к реплике" style "muted_text"
-
 style setting_button is button:
     padding (15, 10)
     background Solid("#15372fd9")
@@ -355,6 +358,13 @@ screen about():
             text "Урал-батыр · Песнь живой воды" style "panel_title"
             text "Художественная адаптация башкирского народного эпоса в двенадцати песнях. Диалоги, переходы между сценами и игровые выборы написаны для игры; это не дословный текст эпоса." size 26
             text "Сюжет охватывает семью Янбирде и Янбике, освобождение Хумай, развилку братьев, царства Катила и Кахкахи, Самрау и Акбузата, войну с дивами, Яншишму и наследие сыновей." size 26
+            null height 6
+            text "Двенадцать песен" style "panel_title"
+            for song_title, song_goal in songs:
+                text "— [song_title]. [song_goal]" size 25
+            null height 6
+            text "Как влияют выборы" style "panel_title"
+            text "Смелость отмечает поступки вопреки страху, милосердие — внимание к чужой беде, рассудительность — вопросы и осторожность. Черты открывают разные реплики и отклики героев, а финал следует эпосу." size 26
             text "Текст для сверки" style "panel_title"
             textbutton "Эпос «Урал-батыр»: академический перевод" action OpenURL("https://урал-батыр.рф/epos-ural-batyr-na-russkom-yazyke-aka/") style "page_button"
             text "Управление" style "panel_title"
@@ -383,6 +393,7 @@ screen confirm(message, yes_action, no_action):
 style confirm_button is button:
     background Solid("#1a4035")
     hover_background Solid("#35614d")
+    selected_background Solid("#35614d")
     padding (18, 10)
 
 style confirm_button_text is button_text:
