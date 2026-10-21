@@ -25,11 +25,14 @@ default courage = 0
 default mercy = 0
 default wisdom = 0
 default journal_entries = []
+default quick_menu = True
 default rescued_people = False
 default warned_zarkum = False
 default trusted_brother = False
 default remembered_elder = False
 default ending_reached = False
+default persistent.large_text = False
+default persistent.reduced_motion = False
 
 define songs = (
     ("Дом среди вод", "Выслушать Янбирде и понять, что значит запрет."),

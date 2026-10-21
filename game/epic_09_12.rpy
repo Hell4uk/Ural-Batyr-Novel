@@ -189,6 +189,6 @@ label epic_12:
     hide screen story_hud
     $ quick_menu = False
     window hide
-    centered "{size=50}{color=#edc47b}УРАЛ-БАТЫР{/color}{/size}\n\nСказание завершено\n\n{size=26}Художественная адаптация башкирского народного эпоса{/size}"
+    call screen ending_card
     $ quick_menu = True
     return

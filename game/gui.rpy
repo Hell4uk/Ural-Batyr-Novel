@@ -6,18 +6,18 @@ define gui.text_font = "fonts/Nunito.ttf"
 define gui.name_text_font = "fonts/Nunito.ttf"
 define gui.interface_text_font = "fonts/Nunito.ttf"
 define gui.language = "unicode"
-define gui.text_color = "#f4eee2"
-define gui.interface_text_color = "#f4eee2"
-define gui.accent_color = "#edc47b"
-define gui.idle_color = "#d3dce2"
+define gui.text_color = "#edf3ed"
+define gui.interface_text_color = "#edf3ed"
+define gui.accent_color = "#b8dfc2"
+define gui.idle_color = "#d5e4d9"
 define gui.hover_color = "#ffffff"
-define gui.selected_color = "#edc47b"
-define gui.insensitive_color = "#73808c"
+define gui.selected_color = "#b8dfc2"
+define gui.insensitive_color = "#84988c"
 define gui.text_size = 32
 define gui.name_text_size = 34
-define gui.interface_text_size = 28
+define gui.interface_text_size = 26
 define gui.button_text_font = gui.interface_text_font
-define gui.button_text_size = 28
+define gui.button_text_size = 26
 define gui.button_text_idle_color = gui.idle_color
 define gui.button_text_hover_color = gui.hover_color
 define gui.button_text_selected_color = gui.selected_color
@@ -37,39 +37,39 @@ style default:
     color gui.text_color
     language gui.language
 style button:
-    background Solid("#192c3be8")
-    hover_background Solid("#304b60")
-    selected_background Solid("#3b4c4b")
-    insensitive_background Solid("#15202bcc")
-    padding (18, 10)
+    background Solid("#15372fd9")
+    hover_background Solid("#315748f2")
+    selected_background Solid("#315748f2")
+    insensitive_background Solid("#10261fcc")
+    padding (20, 12)
 style button_text:
     font gui.interface_text_font
-    size 28
+    size gui.button_text_size
     color gui.idle_color
     hover_color gui.hover_color
     selected_color gui.selected_color
     insensitive_color gui.insensitive_color
     yalign 0.5
 style frame:
-    background Solid("#0d1927f2")
+    background Solid("#0b2823ed")
     padding (24, 24)
 style bar:
     ysize 32
-    left_bar Solid("#d8b471")
-    right_bar Solid("#334b60")
-    thumb Solid("#f6ebce", xsize=18, ysize=36)
+    left_bar Solid("#8fbea0")
+    right_bar Solid("#294a3f")
+    thumb Solid("#d7ecdc", xsize=18, ysize=36)
     thumb_shadow None
     thumb_offset 0
 style slider is bar
 style scrollbar:
     ysize 12
-    base_bar Solid("#203344")
-    thumb Solid("#c7ae7c")
+    base_bar Solid("#203f35")
+    thumb Solid("#a7cfb3")
     unscrollable "hide"
 style vscrollbar:
     xsize 12
-    base_bar Solid("#203344")
-    thumb Solid("#c7ae7c")
+    base_bar Solid("#203f35")
+    thumb Solid("#a7cfb3")
     unscrollable "hide"
 style panel_title:
     size 30
@@ -77,4 +77,4 @@ style panel_title:
     bold True
 style muted_text:
     size 24
-    color "#b4c0cb"
+    color "#a8b9ad"
