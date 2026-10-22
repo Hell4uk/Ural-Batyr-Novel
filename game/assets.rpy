@@ -20,7 +20,11 @@ image menu landscape = landscape("ural_art/mountains.jpeg")
 image ural = "images/ural.png"
 image shulgen = "images/shulgen.png"
 image humay = "images/humay.png"
-image yanbide = 'image/'
+image yanbide = 'images/yanbide.png'
+image yanbike = 'images/yanbike.png'
+image samrau = 'images/samray.png'
+image akbuzat = 'images/akbuzat.png'
+image akbuzat = 'images/akbuzat.png'
 
 transform center_character:
     xysize (650, 880)
