@@ -1,14 +1,15 @@
 # Песни IX–XII: измена, война, живая вода и наследие Урала.
 label epic_09:
     scene bg sky with dissolve
-    call song(9)
+    call song(9) from _call_song_8
     n "Шульген пришёл к Уралу после торжества. Он больше не говорил о состязании. Его голос стал тише, и оттого младшему брату было труднее помнить о предупреждениях."
-    show shulgen at right_character with dissolve
-    show ural at left_character with dissolve
+    show shulgen at right_character, character_depth_3d with dissolve
+    show ural at left_character, character_depth_3d with dissolve
     sh "Ты нашёл всё, за чем мы ушли из дома: славу, оружие, друзей. А я стою перед тобой и прошу разрешения остаться."
     ur "Мы ещё не нашли родник."
     sh "Но даже искать его ты теперь будешь на небесном коне."
     n "Урал попросил Хумай не держать брата в заточении. Он надеялся, что возвращённое доверие поможет тому отойти от Заркума и Азраки."
+    show humay at center_character, character_depth_3d with dissolve
     hu "Я не стану отрицать твоё право любить брата. Только не превращай свою любовь в приказ всем остальным ничего не замечать."
     menu:
         "Открыто поручиться за Шульгена.":
@@ -35,6 +36,8 @@ label epic_09:
         n "Урал повторил предупреждение, но оставил власть в руках того, кого предупреждал. Слова не заменили меры, которую он боялся принять."
     n "Шульген воспользовался посохом во зло. Вода поднялась; благополучие страны оказалось под угрозой. Он вновь сблизился с врагами Урала."
     scene bg storm with dissolve
+    show ural at left_character, character_depth_3d with dissolve
+    show humay at right_character, character_depth_3d with dissolve
     n "Хумай встретила мужа у потемневшего берега. Она не сказала: «Я предупреждала». Урал и без того слышал это в каждом новом ударе воды."
     ur "Я хотел вернуть брата."
     hu "Теперь нужно вернуть людям безопасность."
@@ -44,7 +47,9 @@ label epic_09:
 
 label epic_10:
     scene bg battle with fade
-    call song(10)
+    call song(10) from _call_song_9
+    show ural at left_character, character_depth_3d with dissolve
+    show akbuzat at right_character, character_depth_3d with dissolve
     play music "music/backaudio/tense_music.ogg" fadein 2.0
     n "Азрака поднял дивов. С ним действовали Кахкаха, Заркум и Шульген. То, что прежде казалось отдельными встречами на дороге, теперь сошлось в одной войне."
     azraka "У него один конь и один меч. Пусть попробует быть всюду сразу."
@@ -89,7 +94,8 @@ label epic_10:
 
 label epic_11:
     scene bg spring with fade
-    call song(11)
+    call song(11) from _call_song_10
+    show ural at center_character, character_depth_3d with dissolve
     play music "music/backaudio/place_music4.ogg" fadein 2.0
     n "К Яншишме Урал пришёл не тем юношей, который покинул дом. В его памяти жили освобождённые, погибшие и те, кого он ещё надеялся спасти. Теперь вопрос о бессмертии звучал иначе."
     n "Родник был невелик. Над ним склонялась трава, и вода уходила в землю тонкой струёй. После грома войны Урал почти не слышал её."
@@ -122,6 +128,8 @@ label epic_11:
     ur "Да. Но не с пустыми руками."
     n "Его ладони действительно были пусты. Старец посмотрел на них и впервые улыбнулся."
     scene bg forest with dissolve
+    show ural at left_character, character_depth_3d with dissolve
+    show humay at right_character, character_depth_3d with dissolve
     if persistent.reduced_motion:
         scene bg forest
     else:
@@ -136,7 +144,9 @@ label epic_11:
 
 label epic_12:
     scene bg underworld with dissolve
-    call song(12)
+    call song(12) from _call_song_11
+    show ural at left_character, character_depth_3d with dissolve
+    show akbuzat at right_character, character_depth_3d with dissolve
     n "Уцелевшие дивы скрывались под водой. Оттуда ещё исходила опасность. Победить Азраку оказалось недостаточно: людям нужны были не песни о завершённой войне, а безопасные берега."
     n "Урал пришёл к озеру. На поверхности было спокойно. Именно это спокойствие делало воду страшной: взгляд не мог различить того, что ждало внизу."
     akbuzat "Ты уже многое отдал. Не принимай тишину за отсутствие врага."
@@ -144,6 +154,8 @@ label epic_12:
     n "Он решил выпить воду, чтобы лишить дивов укрытия. Батыр вдохнул глубоко, как перед тяжёлым подъёмом, и склонился к озеру."
     n "Вода уходила, обнажая тёмные камни. Но вместе с ней внутрь попадали враги. Они ранили Урала изнутри. Когда он выпрямился, продолжать подвиг было уже невозможно."
     scene bg mountains with fade
+    show ural at left_character, character_depth_3d with dissolve
+    show humay at right_character, character_depth_3d with dissolve
     n "Акбузат вынес его к людям. Урал ещё слышал их голоса, но отвечал медленно. Весть о ране распространилась быстрее, чем успели подготовить место для отдыха."
     hu "Посмотри на меня. Не пытайся сейчас подняться."
     ur "Я должен сказать им…"
@@ -173,6 +185,7 @@ label epic_12:
     n "Урал умер. Хумай склонилась над ним, и никто не торопил её скорбь словами о славе. Величие подвига не делало потерю маленькой."
     n "Люди похоронили батыра с почестями. Имя Урала осталось в названии гор. Там, где он остановил разрушение, жизнь продолжалась — не потому, что боль исчезла, а потому, что было кому идти дальше."
     scene bg dawn with dissolve
+    show humay at right_character, character_depth_3d with dissolve
     n "Но горной земле требовалась вода. Сыновья взялись продолжить дело: открывали русла, давали воде дорогу между высотами. Меч, прежде служивший в бою, помогал создавать пространство для жизни."
     n "Яик, Нугуш, Идель и Сакмар остались в сказании именами рек. По их берегам селились люди, находили пастбища и переправы, строили дома, которых Урал уже не мог увидеть."
     son "Мы не вернём отца. Но можем сделать так, чтобы его труд не закончился вместе с ним."

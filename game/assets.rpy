@@ -20,11 +20,10 @@ image menu landscape = landscape("ural_art/mountains.jpeg")
 image ural = "images/ural.png"
 image shulgen = "images/shulgen.png"
 image humay = "images/humay.png"
-image yanbide = 'images/yanbide.png'
-image yanbike = 'images/yanbike.png'
-image samrau = 'images/samray.png'
-image akbuzat = 'images/akbuzat.png'
-image akbuzat = 'images/akbuzat.png'
+image yanbide = "images/yanbide.png"
+image yanbike = "images/yanbika.png"
+image samrau = "images/samray.png"
+image akbuzat = "images/akbuzat.png"
 
 transform center_character:
     xysize (650, 880)
@@ -38,6 +37,9 @@ transform right_character:
     xysize (600, 860)
     fit "contain"
     align (0.80, 1.0)
+
+transform character_depth_3d:
+    pass
 
 transform landscape_drift:
     align (0.5, 0.5)

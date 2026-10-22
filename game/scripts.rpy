@@ -81,7 +81,6 @@ label start:
     stop music fadeout 1.0
     play music "music/backaudio/place_music4.ogg" fadein 2.0
     scene bg dawn with fade
-    n "Это художественная адаптация башкирского народного эпоса. Игровые выборы и диалоги созданы для новеллы; основные события сохраняют путь Урал-батыра."
     jump epic_01
 
 label song(number):
