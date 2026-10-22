@@ -17,9 +17,10 @@ image bg dawn = landscape("ural_art/dawn.jpg")
 image menu landscape = landscape("ural_art/mountains.jpeg")
 
 # Existing character artwork is retained.
-image ural = "images/Uto/uto_default.png"
-image shulgen = "images/Michi/michi_default.png"
-image humay = "images/Akiko/akiko_default.png"
+image ural = "images/ural.png"
+image shulgen = "images/shulgen.png"
+image humay = "images/humay.png"
+image yanbide = 'image/'
 
 transform center_character:
     xysize (650, 880)
